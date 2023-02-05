@@ -7,10 +7,10 @@ class LandingPage extends StatefulWidget {
   final String title;
 
   @override
-  State<LandingPage> createState() => _MyHomePageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
-class _MyHomePageState extends State<LandingPage> {
+class _LandingPageState extends State<LandingPage> {
   // int _counter = 0;
 
   // void _incrementCounter() {

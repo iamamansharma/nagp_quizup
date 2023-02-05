@@ -1,6 +1,7 @@
-import 'dart:html';
 import 'package:flutter/material.dart';
 import 'package:nagp_quizup/screens/signUpPage.dart';
+import 'package:nagp_quizup/models/manage_data.dart';
+import 'package:nagp_quizup/screens/homePage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -74,7 +75,27 @@ class _LoginPageState extends State<LoginPage> {
                             // the form is invalid.
                             if (_emailKey.currentState!.validate()) {
                               // make the login check function
-                              print([_emailAddress, _password]);
+                              bool _login = false;
+                              ManageDB()
+                                  .makeLogin(_emailAddress, _password)
+                                  .then((login) {
+                                _login = login;
+                                if (_login) {
+                                  print('login successful');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomePage(title: 'NAGP')),
+                                  );
+                                } else {
+                                  const snackBar = SnackBar(
+                                    content: Text('Email/Password Incorrect!'),
+                                  );
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(snackBar);
+                                }
+                              });
                             }
                           },
                           child: const Text('Login'),

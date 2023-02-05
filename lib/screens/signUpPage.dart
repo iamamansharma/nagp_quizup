@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nagp_quizup/screens/loginPage.dart';
+import 'package:nagp_quizup/models/manage_data.dart';
+import 'package:nagp_quizup/models/user_data.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -99,6 +101,17 @@ class _SignUpPageState extends State<SignUpPage> {
                                           actions: [
                                             ElevatedButton(
                                               onPressed: () {
+                                                var u1 = User(
+                                                    name: '',
+                                                    age: 0,
+                                                    email: _emailAddress,
+                                                    password: _password,
+                                                    phoneNumber: '',
+                                                    profilePic: '');
+                                                print('got user data $u1');
+                                                print('writing data to db');
+                                                ManageDB().insertUser(u1);
+                                                print('data written to db');
                                                 Navigator.of(context).pop();
                                                 Navigator.push(
                                                   context,
