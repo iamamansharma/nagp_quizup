@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    padding: EdgeInsets.symmetric(vertical: 16.0),
                     child: Row(children: [
                       Expanded(
                         child: ElevatedButton(
@@ -85,8 +85,9 @@ class _LoginPageState extends State<LoginPage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomePage(title: 'NAGP')),
+                                        builder: (context) => HomePage(
+                                            title: 'NAGP',
+                                            emailAddress: _emailAddress)),
                                   );
                                 } else {
                                   const snackBar = SnackBar(

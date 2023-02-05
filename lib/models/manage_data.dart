@@ -46,4 +46,17 @@ class ManageDB {
     }
     return found;
   }
+
+  Future<Object> getCurrentUser(email) async {
+    var userList = await users();
+    Object u1 = '';
+    if (userList.isNotEmpty) {
+      userList.forEach((usr) {
+        if (usr.email == email) {
+          u1 = usr;
+        }
+      });
+    }
+    return u1;
+  }
 }
